@@ -1,5 +1,5 @@
 
-f = open('2-input.py')
+f = open('02-input.py')
 
 def gift_from_str(gift_str):
 	gift = [int(len) for len in gift_str.split("x")]

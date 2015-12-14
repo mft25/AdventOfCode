@@ -1,6 +1,6 @@
 from itertools import permutations
 
-f = open('9-input.py')
+f = open('09-input.py')
 
 def read_distance(str):
 	parts = str.strip().split()
@@ -20,7 +20,7 @@ def input_to_array(array):
 def main():
 	array = [[0 for j in xrange(0,8)] for i in xrange(0,8)]
 	input_to_array(array)
-	max_distance = 0
+	min_distance = sum(map(sum, array))
 	for permutation in permutations(range(0,8)):
 		# Don't process reverse routes already processed.
 		if permutation[0] > permutation[7]:
@@ -28,7 +28,9 @@ def main():
 		distance = 0
 		for i in xrange(1,8):
 			distance += array[permutation[i]][permutation[i-1]]
-		max_distance = max(distance, max_distance)
-	print max_distance
+			if distance > min_distance:
+				continue
+		min_distance = min(distance, min_distance)
+	print min_distance
 		
 main()

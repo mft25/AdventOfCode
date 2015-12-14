@@ -1,6 +1,6 @@
 import re
 
-f = open('7-input.py')
+f = open('07-input.py')
 
 class Rule:
 	def __init__(self, rule_str):

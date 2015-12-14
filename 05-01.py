@@ -1,5 +1,5 @@
 
-f = open('5-input.py')
+f = open('05-input.py')
 
 def has_three_vowels(str):
 	count = 0

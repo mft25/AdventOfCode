@@ -1,5 +1,5 @@
 
-f = open('5-input.py')
+f = open('05-input.py')
 
 def two_pair(str):
 	for i in xrange(0,len(str)-1):

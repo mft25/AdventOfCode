@@ -1,5 +1,5 @@
-
-f = open('6-input.py')
+# I edited the original input file by piping through sed
+f = open('06-input.py')
 
 def read_instruction(instruction):
 	parts = instruction.strip().split("|")
@@ -10,11 +10,11 @@ def transform_grid(type, start, end, grid):
 	for i in xrange(start[0], end[0]+1):
 		for j in xrange(start[1], end[1]+1):
 			if type == 1:
-				grid[i][j] = grid[i][j] + 2
+				grid[i][j] = 1 - grid[i][j]
 			elif type == 2:
-				grid[i][j] = grid[i][j] + 1
+				grid[i][j] = 1
 			elif type == 3:
-				grid[i][j] = max(grid[i][j] - 1, 0)
+				grid[i][j] = 0
 	return grid
 
 def main():

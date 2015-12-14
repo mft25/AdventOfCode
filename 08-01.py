@@ -1,5 +1,5 @@
 
-f = open('8-input.py')
+f = open('08-input.py')
 
 def escaped_len(str):
 	diff = 2
