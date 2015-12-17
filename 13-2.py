@@ -2,8 +2,6 @@ from itertools import permutations
 
 f = open('13-input.py')
 
-num_people = 9
-
 def read_happiness(str):
 	parts = str.strip().strip(".").split()
 	direction = -1 if parts[2] == "lose" else 1
@@ -19,7 +17,7 @@ def input_to_array(array):
 			people.append(p2)
 		array[people.index(p1)][people.index(p2)] = happiness
 
-def main():
+def main(num_people):
 	array = [[0 for j in xrange(0,num_people)] for i in xrange(0,num_people)]
 	input_to_array(array)
 	max_happiness = sum(map(lambda row: sum([x for x in row if x < 0]), array))
@@ -31,4 +29,4 @@ def main():
 		max_happiness = max(happiness, max_happiness)
 	print max_happiness
 
-main()
+main(9)

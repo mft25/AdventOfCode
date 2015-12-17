@@ -2,6 +2,7 @@
 f = open('base-input.py')
 
 def main():
-	print 123
+	for line in f:
+		print line
 
 main()
