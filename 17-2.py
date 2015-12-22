@@ -1,37 +1,29 @@
 from collections import defaultdict
 
 f = open('17-input.py')
-
-def option_exists(options):
-	for pair in options:
-		if sum(pair[0]) < total and sum(pair[1]) > 0:
-			return True
-	return False
 	
-def process_options(options):
-	new_options = []
-	for pair in options:
-		global min_required
-		global count
-		if sum(pair[0]) > total or len(pair[0]) > min_required:
-			continue
-		if sum(pair[0]) == total:
-			if len(pair[0]) < min_required:
-				min_required = len(pair[0])
-				count = 0
-			count += 1
-			continue
-		for (i, item) in enumerate(pair[1]):
-			new_left_list = list(pair[0])
-			new_left_list.append(item)
-			new_pair = (new_left_list, pair[1][i+1:])
-			new_options.append(new_pair)
-	return new_options
-
-def main(containers):
+def main(total, containers):
+	min_required = len(containers)
+	count = 0
 	options = [([], sorted(containers))]
 	while len(options) > 0:
-		options = process_options(options)
+		new_options = []
+		for pair in options:
+			if sum(pair[0]) > total or len(pair[0]) > min_required:
+				continue
+			if sum(pair[0]) == total:
+				if len(pair[0]) < min_required:
+					min_required = len(pair[0])
+					count = 0
+				count += 1
+				continue
+			for (i, item) in enumerate(pair[1]):
+				new_left_list = list(pair[0])
+				new_left_list.append(item)
+				new_pair = (new_left_list, pair[1][i+1:])
+				new_options.append(new_pair)
+		options = new_options
+	print count
 
 # Description of algorithm:
 #
@@ -50,9 +42,4 @@ def main(containers):
 #      - Take a copy of the pair.
 #      - Move the given item from the right list to the left list.
 #      - Add the new pair to the main list.
-containers = [int(line) for line in f]
-min_required = len(containers)
-count = 0
-total = 150
-main(containers)
-print count
+main(150, [int(line) for line in f])
